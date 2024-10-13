@@ -90,7 +90,7 @@ const CanvasPage = () => {
     fetchImageFromUrl('https://res.cloudinary.com/ds96vmvih/image/upload/v1714541773/eelonSchoolManagementApp/certificates/templates/onu5zxeoso5ghjtgyyt3.png');
   }, []);
 
-  console.log(shapeRef.current === document.activeElement);
+  //   console.log(shapeRef.current === document.activeElement);
 
   return (
     <div className='w-full h-full p-5'>
