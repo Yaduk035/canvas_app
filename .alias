@@ -1,0 +1,6 @@
+alias gts='git status'
+alias gta='git add .'
+alias gtc='git commit -m'
+alias gtps='git push'
+alias gtpl='git pull origin main'
+alias nrd='npm run dev'

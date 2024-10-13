@@ -1,5 +1,11 @@
+import {Button} from '@/components/ui/button';
+
 const CanvasPage = () => {
-  return <div style={{width: '100%', height: '100%'}}>CanvasPage</div>;
+  return (
+    <div className='w-full h-full p-5'>
+      <div className='text-3xl font-bold text-gray-800'>Canvas</div>
+    </div>
+  );
 };
 
 export default CanvasPage;
