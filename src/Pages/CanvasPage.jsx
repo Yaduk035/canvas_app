@@ -1,10 +1,10 @@
 import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
-import {Circle} from 'lucide-react';
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {Image as KonvaImage, Layer, Rect, Stage, Text as KonvaText, Transformer} from 'react-konva';
-import {buttonVariants} from '@/components/ui/button';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {Image as KonvaImage, Layer, Stage, Text as KonvaText, Transformer} from 'react-konva';
+import AsyncSelect from 'react-select';
+import Select from 'react-select';
+import countryList from 'react-select-country-list';
 
 const CanvasPage = () => {
   const [image, setImage] = useState();
@@ -13,6 +13,15 @@ const CanvasPage = () => {
   const [enableEditing, setenableEditing] = useState(false);
   const [schoolName, setSchoolName] = useState('');
   const stageRef = useRef(null);
+
+  const [value, setValue] = useState('');
+  const options = useMemo(() => countryList().getData(), []);
+  console.log(options, 'opt');
+  console.log(value, 'val');
+
+  const changeHandler = value => {
+    setValue(value);
+  };
 
   const shapeRef = useRef();
   const trRef = useRef();
@@ -92,9 +101,26 @@ const CanvasPage = () => {
 
   //   console.log(shapeRef.current === document.activeElement);
 
+  setTimeout(() => {
+    if (!value)
+      setValue({
+        value: 'IT',
+        label: 'Italy',
+      });
+  }, [3000]);
+
   return (
     <div className='w-full h-full p-5'>
       <div className='text-3xl font-bold text-gray-800'>Canvas</div>
+      <AsyncSelect options={options} value={value} onChange={changeHandler} />
+      {/* <Select
+        options={options}
+        value={{
+          value: 'IT',
+          label: 'Italy',
+        }}
+        onChange={changeHandler}
+      /> */}
       <div className='w-72 my-4'>
         <input type='file' onChange={e => onImportImageSelect(e.target.files[0])} />
       </div>
@@ -148,14 +174,3 @@ const CanvasPage = () => {
 };
 
 export default CanvasPage;
-
-// const LionImage = ({image}) => {
-//   const imgRef = useRef(null);
-//   const [imageDimensions, setimageDimensions] = useState();
-
-//   //   const data = useImage(
-//   //     'https://res.cloudinary.com/ds96vmvih/image/upload/v1714541773/eelonSchoolManagementApp/certificates/templates/onu5zxeoso5ghjtgyyt3.png'
-//   //   );
-//   console.log(imgRef.current);
-//   return <Image image={image} height={600} width={800} ref={imgRef} />;
-// };
