@@ -101,13 +101,13 @@ const CanvasPage = () => {
 
   //   console.log(shapeRef.current === document.activeElement);
 
-  setTimeout(() => {
-    if (!value)
-      setValue({
-        value: 'IT',
-        label: 'Italy',
-      });
-  }, [3000]);
+  // setTimeout(() => {
+  //   if (!value)
+  //     setValue({
+  //       value: 'IT',
+  //       label: 'Italy',
+  //     });
+  // }, [3000]);
 
   return (
     <div className='w-full h-full p-5'>
